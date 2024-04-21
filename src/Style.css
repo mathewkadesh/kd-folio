@@ -1,0 +1,285 @@
+body{
+  overflow-x: hidden;
+  background-color: #DDE6ED;
+}
+
+.project_img{
+  height: fit-content;
+  width: 200px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+
+.project-card {
+  margin: 0px 0px 25px 25px;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.project-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.02, 1.02);
+}
+
+.smallButton{
+  padding: 0px !important;
+  align-items: center !important;
+  display: flex !important;
+  border: none !important;
+  background-color: transparent !important;
+  border-radius: 50% !important;  
+}
+
+.typing-animation-container {
+  white-space: pre-line;
+ 
+  margin: 0;
+  padding: 20px;
+}
+
+p {
+  margin: 0;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.blinking-cursor {
+  display: inline-block;
+  margin-left: 5px; /* Adjust the margin as needed */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.rectangle {
+  border-radius: 3px;
+  display: inline-block;
+  width: fit-content;
+  border: 4px solid black;
+  background: transparent;
+  text-align: left;
+  padding: 0px 45px 0px 45px;
+  line-height: 25px;
+}
+
+.nav_option{
+  margin: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.skillTitle{
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.skillimg{
+  width: 50px;
+}
+
+.skillsName{
+  font-size: small;
+}
+
+.projectBtn{
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: none;
+  background-color: #eee;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.projectBtn.active {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  color: lightgreen;
+}
+
+.fixed-card {
+  position: fixed;
+  /* Assuming the sidebar is 1/4th of the width of the viewport */
+  max-height: 100vh;
+  overflow-y: auto; /* Enables scrolling if the content is taller than the viewport */
+}
+
+.scrollable-content {
+  height: 100vh;
+  overflow-y: auto; /* Enables scrolling for the right-side content */
+}
+
+.profileCard {
+  background-color: #e8eaf6; /* Cool background color */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow for depth */
+}
+.downloadBtn {
+  background-color: #5c6bc0; /* Blue shade */
+  color: #ffffff;
+  border: none;
+  box-shadow: 2px 4px 6px 0px rgba(0,0,0,0.2);
+}
+
+.downloadBtn:hover {
+  background-color: #0e1f8b; /* Darker shade on hover */
+  box-shadow: 4px 8px 12px 10px rgba(0,0,0,0.2);
+}
+
+
+.card-embossed {
+  border: none;
+  background-color: var(--card-bg-color, #fff);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-embossed:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.resume-card {
+  border: none;
+  margin-top: 15px;
+  background-color: #f8f9fa;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.resume-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.resume-card-body {
+  transition: transform 0.3s ease-in-out;
+}
+
+.resume-card:hover .resume-card-body {
+  transform: translateY(-5px);
+}
+
+.vertical-center {
+  height: 100vh;  /* Ensures the column takes up the full height of the viewport */
+  display: flex;
+  flex-direction: column;  /* Stacks flex children (buttons) vertically */
+  justify-content: center;  /* Centers flex children vertically */
+  align-items: center;  /* Centers flex children horizontally */
+}
+
+.selectionBtn {
+  padding: 5px 10px;  /* Padding adjusted for better visibility, might need further tweaking */
+  font-size: 16px;  /* Larger text size for better visibility */
+  width: 80px;  /* Increased width for all buttons to accommodate hexagon shape */
+  height: 70px;  /* Fixed height to ensure the hexagon shape looks good */
+  line-height: 70px;  /* Align text vertically */
+  margin-bottom: 20px;  /* Space between buttons */
+  transition: transform 0.2s ease-in-out;  /* Smooth transition for hover effects */
+  border-radius: 8px;  /* Optional: for slightly rounded corners on the hexagon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;  /* Example background color */
+  border-radius: 10px;
+  
+  /* Creating a hexagonal shape using clip-path */
+  clip-path: polygon(
+    25% 0%, /* top left */
+    75% 0%, /* top right */
+    100% 50%, /* right middle */
+    75% 100%, /* bottom right */
+    25% 100%, /* bottom left */
+    0% 50% /* left middle */
+  );
+}
+
+.selectionBtn:hover {
+  transform: scale(1.1);  /* Scales up the button on hover */
+}
+
+.selectionBtn:hover > :not(:hover){
+opacity: 0.5;
+}
+
+.contactBtn{
+  margin: 0px 15px 30px 0px;
+  height: 80px;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: none;
+  background-color: #eee;
+  color: black;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.contactInfo{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+
+.image-container {
+  background: linear-gradient(160deg, #00c6ff, #ffcb27);
+  border-radius: 5% 50% 5% 5%;
+  position: relative;
+  overflow: hidden;
+  height: 350px;
+  width: 100%;
+}
+
+.card-embose {
+  border: none;
+  background: var(--light-background); /* Replace with your actual background color variable or value */
+  overflow: hidden; /* For better control of children elements */
+  border-radius: 1rem; /* Adjust as needed */
+  transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* --------------------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .mobile-button-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; /* Add right to ensure the container spans the entire width */
+    background-color: transparent;
+    z-index: 1000; /* Ensure it's above other content */
+    display: flex;
+    justify-content: center; /* Center buttons across the top */
+    flex-wrap: wrap; /* Allow buttons to wrap if they don't fit */
+    padding: 10px; /* Adjust padding */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add a shadow for some depth */
+  }
+
+  .mobile-button-container .selectionBtn {
+    margin: 5px; /* Add margin to ensure buttons don't touch each other */
+    border-radius: 50%; /* Make the button circular */
+    width: 48px; /* Define a fixed width */
+    height: 48px; /* Define a fixed height to make it a circle */
+    padding: 0; /* Remove padding to ensure the icon is centered */
+    display: flex; /* Use flexbox to center the icon inside the button */
+    align-items: center; /* Center the icon vertically */
+    justify-content: center; /* Center the icon horizontally */
+    box-shadow: 
+      inset 0 2px 2px rgba(255, 255, 255, 0.8), /* Top inner white shadow */
+      inset 0 -2px 2px rgba(0, 0, 0, 0.2); /* Bottom inner dark shadow */
+    background-color: #fff; /* Add background color if needed */
+    border: none; /* Remove border */
+  }
+
+  /* Adjust the size of the FontAwesome icons if needed */
+  .mobile-button-container .selectionBtn svg {
+    font-size: 24px; /* Adjust icon size if necessary */
+  }
+}
