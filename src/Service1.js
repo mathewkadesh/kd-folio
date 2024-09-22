@@ -3,6 +3,8 @@ import { Card, Col, Row, Badge, Container } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import kiteupImage from "./res/service/kiteup.png";
+import pcsImage from './res/service/psc.png';
 
 const ProjectCard = ({ project }) => {
   const cardHover = {
@@ -44,12 +46,12 @@ const ProjectCard = ({ project }) => {
       <motion.div variants={cardHover} className="card-embose">
         <Card className="h-100 bg-light rounded" style={{ border: 'none' }} onClick={() => openLink(project.demoLink)}>
           <Card.Img variant="top" src={project.image} />
-          <Card.Body>
+          <Card.Body style={{backgroundColor:'#545662', color:'white'}}>
             <Card.Title>{project.title}</Card.Title>
             <Card.Text style={{ textAlign: 'justify', fontSize: '18px' }}>{project.description}</Card.Text>
             <div className="pt-2">
               {project.technologies.map((tech, index) => (
-                <Badge key={index} bg="secondary" className="me-2">{tech}</Badge>
+               <Badge key={index}  bg="warning" className="me-2" text='dark'>{tech}</Badge>
               ))}
             </div>
           </Card.Body>
@@ -66,7 +68,7 @@ const Projects1 = () => {
       title: "Kiteup",
       description: "Kiteup is a premier website development company, we harness the winds of innovation to create stunning online platforms that captivate, engage, and leave a lasting impact.",
       technologies: ["React JS", "ReactBootstrap", "Node.js"],
-      image: "img/kiteup.png",
+      image: kiteupImage,
       demoLink: "https://mathewkadesh.github.io/kiteup1/"
     },
     {
@@ -74,15 +76,15 @@ const Projects1 = () => {
       title: "Planetary Carbon Standard",
       description: "Planetary carbon standard (PCS) is the simplest version of a carbon standard that can be used for validation and verification of sustainable projects of all sizes from all around the world.",
       technologies: ["CSS", "PHP", "MySQL"],
-      image: "img/psc.png",
+      image: pcsImage,
       demoLink: "https://mathewkadesh.github.io/pcs/index.html"
     }
   ];
 
   return (
     <Container fluid="md">  {/* Fluid container for full width on small devices */}
-      <h2 style={{ margin: '40px 0px 60px 0px' }}>PROJECTS</h2>  {/* Centered heading */}
-      <Row className="g-4">
+      {/* <h2 style={{ margin: '40px 0px 60px 0px', color:'#545662' }}>PROJECTS</h2>  Centered heading */}
+      <Row className="g-4" style={{ marginTop: '100px'}}>
         {projects.map(project => (
           <Col key={project.id} xs={12} md={6}>  {/* Responsive grid */}
             <ProjectCard project={project} />

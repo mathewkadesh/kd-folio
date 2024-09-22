@@ -7,13 +7,6 @@ function App() {
   return (
     <div>
       <ProfileCard/>
-        {/* <NavbarTop/>
-        <Intro/>
-        <About/>
-        <Skills/>
-        <Projects1/>
-        <Service/> */}
-        {/* <Projects/> */}
     </div>
   );
 }

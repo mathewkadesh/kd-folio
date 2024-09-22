@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+
+  scroll-behavior: smooth;
+}
+
+.back {
+  position: relative;
+  background: url("../res/bg.jpg") 0 0 no-repeat;
+  background-size: cover;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Works Tabs ---------------------------------------------------------------- */
+
+.workHeader {
+  text-align: left;
+  color: #c8375c;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 100px;
+  margin-bottom: 15px;
+}
+
+.workSpan {
+  text-align: left;
+  color: #000000ca;
+  font-weight: bold;
+  font-size: 22pt;
+  margin-left: 100px;
+  margin-bottom: 80px;
+}
+
+.workNavHeader {
+  margin-top: 15px;
+}
+
+.workCard {
+  border-radius: 20px;
+  width: 250px;
+  margin: 10px;
+  border: none;
+  height: 300px;
+}
+
+.workCardImg {
+  height: 225px;
+  width: 180px;
+  padding-top: 10px;
+  border-radius: 30px;
+}
+
+.workCardButton {
+  padding: 0px;
+  align-items: center;
+  display: flex;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.mr-2 {
+  margin-right: 10px;
+}

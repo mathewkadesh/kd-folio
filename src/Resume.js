@@ -1,122 +1,41 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGraduationCap, faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { Container, Row } from 'react-bootstrap';
+import { Chrono } from "react-chrono";
 import './Style.css';
 
-function Resume() {
+const Resume = () => {
+  const items = [{
+    title: "Jan 2023 - May 2024",
+    cardTitle: "Masters in Advanced Computer Science",
+    cardSubtitle:"Cardiff Metropolitan University, Cardiff, UK",
+    cardDetailedText: "Completed in Merit",
+   }, {
+    title: "May 2023 - Feb 2024",
+    cardTitle: "Junior Web Developer – Apprenticeship",
+    cardSubtitle:"Mitax Consulting, Filton, UK",
+    cardDetailedText: "Designed user-friendly, responsive interfaces with ReactJS, NodeJS, CSS, and JavaScript. Implemented and optimized MySQL databases, ensuring data integrity and performance.",
+  },{
+    title: "2021 - 2022",
+    cardTitle: "Bachelors in Software Engineering",
+    cardSubtitle:"Cardiff Metropolitan University,  Colombo, Sri Lanka",
+    cardDetailedText: "Completed in First Class",
+  },{
+    title: "2021 - 2022",
+    cardTitle: "Website Developer",
+    cardSubtitle:"eBuilder, Colombo, Sri Lanka",
+    cardDetailedText: "Maintained robust code in React JS, HTML, and CSS, leading to a 30% increase in code reusability across projects. ",
+  }]
 
-    const educationExperiences = [
-        {
-          id: 1,
-          dateRange: '2023-2024',
-          degree: 'Masters in Advanced Computer Science',
-          institution: 'Cardiff Metropolitan University, Cardiff, UK '
-        },
-        {
-          id: 2,
-          dateRange: '2021-2022',
-          degree: 'Bachelors in Software Engineering - First Class',
-          institution: 'ICBT Campus, Colombo, Sri Lanka'
-        },
-        {
-          id: 3,
-          dateRange: '2019-2021',
-          degree: 'SQA Level 7 in software Engineering',
-          institution: 'Java Institute, Colombo, Sri Lanka'
-        }
-      ];
-
-    const workExperiences = [
-        {
-          id: 1,
-          dateRange: '2023',
-          position: 'Junior Software Engineer – Internship',
-          company: 'Mitax Consulting, Filton, UK '
-        },
-        {
-          id: 2,
-          dateRange: '2021-2022',
-          position: 'Software Engineer (Project: Compliance As A Service Tool) ',
-          company: 'eBuilder, Colombo, Sri Lanka'
-        }
-      ];
-
-      const hoverAnimation = {
-        scale: 1.05,
-        boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-      };
-    
-      // Define the card transition properties
-      const transitionProperties = {
-        type: "spring",
-        stiffness: 300,
-      };
-    
-      // Define the card animation sequence
-      const cardAnimation = (index) => ({
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { delay: index * 0.2, ...transitionProperties },
-        whileHover: hoverAnimation,
-      });
-    
-      const educationCardBg = '#fff8dc'; // Light gold color for education cards
-      const workCardBg = '#fafad2'; 
-
-    return (
-      <Container className="resume-section">
-            <Row>
-                <h2 style={{ margin: '40px 0px' }}>RESUME</h2>
-                <Col>
-                    <h4><FontAwesomeIcon icon={faGraduationCap} /> EDUCATION</h4>
-                    {educationExperiences.map((study, index) => (
-                        <motion.div
-                            {...cardAnimation(index)}
-                            key={study.id}
-                        >
-                            <Card style={{
-                                marginTop: '15px',
-                                border: 'none',
-                                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                                backgroundColor: educationCardBg, // Use light gold color
-                            }}>
-                                <Card.Body>
-                                    <Card.Title>{study.dateRange}</Card.Title>
-                                    <Card.Subtitle>{study.degree}</Card.Subtitle>
-                                    <p style={{ fontSize: '14px' }}>{study.institution}</p>
-                                </Card.Body>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </Col>
-                <Col>
-                    <h4><FontAwesomeIcon icon={faBriefcase} /> EXPERIENCE</h4>
-                    {workExperiences.map((job, index) => (
-                        <motion.div
-                            {...cardAnimation(index + 0.1)} // Slightly different delay for staggering effect
-                            key={job.id}
-                        >
-                            <Card style={{
-                                marginTop: '15px',
-                                border: 'none',
-                                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                                backgroundColor: workCardBg, // Use a slightly different light gold color
-                            }}>
-                                <Card.Body>
-                                    <Card.Title>{job.dateRange}</Card.Title>
-                                    <Card.Subtitle>{job.position}</Card.Subtitle>
-                                    <p style={{ fontSize: '14px' }}>{job.company}</p>
-                                </Card.Body>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </Col>
-            </Row>
-        </Container>
-      );
-    
+  return (
+    <Container fluid="md" className="contact-container">
+  {/* <h2 style={{ margin: '40px 0px 60px 0px', color:'#545662' }}>CONTACT ME</h2> */}
+  <Row className="justify-content-center text-center" style={{ marginTop: '120px'}}>
+    <div style={{ width: '100%', height: '450px' }}>
+      <Chrono items={items} mode="VERTICAL_ALTERNATING" hideControls={true} />
+    </div>
+  </Row>
+</Container>
+  )
 }
 
-export default Resume
+export default Resume;
