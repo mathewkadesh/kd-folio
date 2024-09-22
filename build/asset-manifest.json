@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.5bf761b1.css",
+    "main.js": "/portfolio/static/js/main.1113e280.js",
+    "static/js/496.982cc2b7.chunk.js": "/portfolio/static/js/496.982cc2b7.chunk.js",
+    "static/media/psc.png": "/portfolio/static/media/psc.a7884ac6d42bdd6b91fe.png",
+    "static/media/pic4.png": "/portfolio/static/media/pic4.5367e64e2e2b22fc9222.png",
+    "static/media/MathewKadesh.pdf": "/portfolio/static/media/MathewKadesh.b328a60eb0af145fc59f.pdf",
+    "static/media/pic5.png": "/portfolio/static/media/pic5.3e71898a41da60648199.png",
+    "static/media/kiteup.png": "/portfolio/static/media/kiteup.687a9dcd205c6d002b01.png",
+    "static/media/rbootstrap.png": "/portfolio/static/media/rbootstrap.e74b10e18ab1f9700b8b.png",
+    "static/media/app-development.png": "/portfolio/static/media/app-development.f9d169e80e84e333a6d1.png",
+    "static/media/ux-design.png": "/portfolio/static/media/ux-design.eeb76770b5cf656613a3.png",
+    "static/media/development.png": "/portfolio/static/media/development.ec2ba861e4e2f4ceba9d.png",
+    "static/media/animate.png": "/portfolio/static/media/animate.88e7807dfa12e7a8ee35.png",
+    "static/media/typescript.png": "/portfolio/static/media/typescript.af108db04a54d784da9b.png",
+    "static/media/js.png": "/portfolio/static/media/js.3dfb665e058d08c99f28.png",
+    "index.html": "/portfolio/index.html",
+    "main.5bf761b1.css.map": "/portfolio/static/css/main.5bf761b1.css.map",
+    "main.1113e280.js.map": "/portfolio/static/js/main.1113e280.js.map",
+    "496.982cc2b7.chunk.js.map": "/portfolio/static/js/496.982cc2b7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5bf761b1.css",
+    "static/js/main.1113e280.js"
+  ]
+}
