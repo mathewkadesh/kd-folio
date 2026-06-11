@@ -10,9 +10,17 @@
 
 # production
 /build
+/dist
+
+# legacy CRA app — superseded by Vite rebuild in /src
+/src_legacy
+
+# unused experimental backend (old ATS CV generator, replaced by static CV page)
+/server
 
 # misc
 .DS_Store
+._*
 .env.local
 .env.development.local
 .env.test.local

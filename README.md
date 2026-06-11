@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Kadesh Portfolio v2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cinematic personal portfolio for **Mathew Kadesh** — Full-Stack Engineer & AI Developer.
+Built with React 18 + Vite + TypeScript + Tailwind CSS + Framer Motion.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+| Layer | Tech |
+|---|---|
+| Framework | React 18 + Vite |
+| Language | TypeScript |
+| Styling | Tailwind CSS (custom Cinematic Noir theme) |
+| Animation | Framer Motion |
+| Routing | react-router-dom v6 |
+| Icons | lucide-react |
+| Utilities | clsx, tailwind-merge |
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# Install dependencies
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Start dev server (http://localhost:5173)
+npm run dev
 
-### `npm test`
+# Type-check + production build
+npm run build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Preview production build locally
+npm run preview
+```
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+  components/     Navbar, Footer, MediaSlot, SectionGlow, ProjectCard, SkillBar
+  pages/          Home, Projects, About, CaseStudies, CaseStudyDetail, Services, Contact, CV
+  data/           projects.ts, caseStudies.ts, services.ts, skills.ts, experience.ts, media.ts
+  lib/            cn.ts (clsx util), motion.ts (Framer variants)
+  App.tsx         Lazy-loaded routes + shell
+  main.tsx        React 18 root
+  index.css       Tailwind directives + print styles
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Adding Content
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All content lives in `src/data/`. Edit these typed files to update the site:
 
-### `npm run eject`
+| File | Controls |
+|---|---|
+| `projects.ts` | Projects grid, featured row, filter chips |
+| `caseStudies.ts` | Case study pages (full content) |
+| `services.ts` | Services grid + filter |
+| `skills.ts` | Skill bars + soft skills |
+| `experience.ts` | Timeline + education |
+| `media.ts` | Image slots — add `src:` to swap placeholder |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Adding Images
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+See `MEDIA.md` for the full list of image slots, ideal dimensions, and generation prompts.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Short version: open `src/data/media.ts`, find the entry by `id`, add `src: '/images/your-file.jpg'`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deploy to Vercel
 
-## Learn More
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Deploy
+vercel
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Or connect the GitHub repo to Vercel — it detects Vite automatically.
 
-### Code Splitting
+For client-side routing, add `vercel.json` at root:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
 
-### Analyzing the Bundle Size
+## Fonts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Loaded via CDN in `index.html`:
+- **Clash Display** (Fontshare) — display/headings
+- **Satoshi** (Fontshare) — body
+- **JetBrains Mono** (Google Fonts) — mono/code
 
-### Making a Progressive Web App
+## Design Tokens (Tailwind)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Token | Value | Usage |
+|---|---|---|
+| `ink` | `#0A0A0B` | Page background |
+| `surface` | `#141416` | Card backgrounds |
+| `surface2` | `#1C1C20` | Hover/nested surfaces |
+| `cinema` | `#E50914` | Primary red accent |
+| `text` | `#F5F5F7` | Primary text |
+| `muted` | `#A1A1AA` | Secondary text |
+| `faint` | `#6B6B73` | Tertiary/hints |
