@@ -1,0 +1,1 @@
+const r={hidden:{opacity:0,y:30},show:{opacity:1,y:0,transition:{duration:.55,ease:[.22,1,.36,1]}}},a=(s=.07,o=0)=>({hidden:{},show:{transition:{staggerChildren:s,delayChildren:o}}}),t={rest:{y:0,scale:1,borderColor:"rgba(255,255,255,0.08)"},hover:{y:-6,scale:1.01,borderColor:"rgba(229,9,20,0.45)",transition:{type:"spring",stiffness:300,damping:22}}};export{t as c,r as f,a as s};
