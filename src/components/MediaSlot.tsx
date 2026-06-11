@@ -20,10 +20,13 @@ export default function MediaSlot({ id, className, iconSize = 32 }: Props) {
   const entry = getMedia(id)
 
   if (entry.src) {
+    const isAbsolute = /^(https?:)?\/\//.test(entry.src)
+    const src = isAbsolute ? entry.src : import.meta.env.BASE_URL.replace(/\/$/, '') + entry.src
+
     return (
       <div className={cn('overflow-hidden', ratioClass[entry.ratio] ?? 'aspect-video', className)}>
         <img
-          src={entry.src}
+          src={src}
           alt={entry.alt}
           className="w-full h-full object-cover"
           style={{ objectPosition: entry.objectPosition }}

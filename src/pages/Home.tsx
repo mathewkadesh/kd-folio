@@ -156,12 +156,12 @@ export default function Home() {
                 >
                   Hire Me
                 </Link>
-                <a
-                  href="/cv"
+                <Link
+                  to="/cv"
                   className="flex items-center gap-2 px-6 py-3 rounded-xl bg-transparent hover:bg-white/[0.05] border border-white/[0.08] text-muted hover:text-text font-medium text-sm transition-all"
                 >
                   <Download size={15} /> CV
-                </a>
+                </Link>
               </motion.div>
 
               {/* Socials */}
