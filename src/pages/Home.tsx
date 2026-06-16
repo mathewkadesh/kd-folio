@@ -1,91 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
-  ArrowRight, Download, Github, Linkedin, Mail,
-  Layers, Brain, Users, Phone,
+  ArrowRight, Download, Github, Linkedin, Mail, ChevronDown,
   Target, MessageSquare, Lightbulb, TrendingUp,
 } from 'lucide-react'
 import { fadeUp, stagger } from '@/lib/motion'
 import MediaSlot from '@/components/MediaSlot'
 import { projects } from '@/data/projects'
 import { softSkills } from '@/data/skills'
-
-// --- Typewriter subtitles ---
-const subtitles = ['Full-Stack Engineer', 'AI Developer', 'Senior Software Engineer']
-
-function Typewriter() {
-  const [index, setIndex] = useState(0)
-  const [displayed, setDisplayed] = useState('')
-  const [deleting, setDeleting] = useState(false)
-  const timeout = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  useEffect(() => {
-    const current = subtitles[index]
-    if (!deleting && displayed.length < current.length) {
-      timeout.current = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60)
-    } else if (!deleting && displayed.length === current.length) {
-      timeout.current = setTimeout(() => setDeleting(true), 2000)
-    } else if (deleting && displayed.length > 0) {
-      timeout.current = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35)
-    } else if (deleting && displayed.length === 0) {
-      setDeleting(false)
-      setIndex((i) => (i + 1) % subtitles.length)
-    }
-    return () => { if (timeout.current) clearTimeout(timeout.current) }
-  }, [displayed, deleting, index])
-
-  return (
-    <span className="text-cinema">
-      {displayed}
-      <span className="animate-pulse">|</span>
-    </span>
-  )
-}
-
-// --- Profile tiles ---
-const profiles = [
-  {
-    id: 'projects',
-    label: 'Projects',
-    sublabel: '10 builds shipped',
-    icon: Layers,
-    to: '/projects',
-    color: 'from-cinema/20 to-ember/10',
-  },
-  {
-    id: 'about',
-    label: 'About',
-    sublabel: 'Skills & experience',
-    icon: Users,
-    to: '/about',
-    color: 'from-blue-500/20 to-purple-500/10',
-  },
-  {
-    id: 'services',
-    label: 'Services',
-    sublabel: 'What I build',
-    icon: Brain,
-    to: '/services',
-    color: 'from-green-500/20 to-teal-500/10',
-  },
-  {
-    id: 'contact',
-    label: 'Contact',
-    sublabel: 'Open to remote roles',
-    icon: Phone,
-    to: '/contact',
-    color: 'from-yellow-500/20 to-orange-500/10',
-  },
-]
-
-// --- Quick stats (recruiter-facing) ---
-const heroStats = [
-  { value: '10+',    label: 'Projects Shipped' },
-  { value: '3+',     label: 'Years Building' },
-  { value: '2,400+', label: 'Job Seekers Verified' },
-  { value: 'MSc',    label: 'Advanced Computer Science' },
-]
 
 // --- Why work with me ---
 const valueIcons: Record<string, React.ElementType> = {
@@ -105,43 +27,49 @@ const stackItems = [
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured)
+  const heroPortrait = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/mathew-kadesh-hero-portrait.png`
 
   return (
     <div className="bg-ink min-h-screen">
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Glow */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[70vh] bg-glow-cinema opacity-70"
+          className="absolute inset-0 bg-ink"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-cinema/8 blur-[120px]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_34%,rgba(229,9,20,0.12)_0%,transparent_46%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink to-transparent"
         />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16">
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,420px)] items-center gap-10 lg:gap-14">
-            <div className="text-center lg:text-left">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,480px)]">
+            <div className="max-w-3xl text-center lg:text-left">
               {/* Name */}
               <motion.h1
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display font-bold text-text leading-none tracking-tight"
+                className="font-display font-bold text-white leading-none tracking-tight drop-shadow-[0_6px_28px_rgba(0,0,0,0.75)]"
                 style={{ fontSize: 'clamp(3.25rem, 10vw, 7rem)' }}
               >
                 Mathew Kadesh
               </motion.h1>
 
-              {/* Typewriter subtitle */}
+              {/* Role pill — static */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="mt-4 text-xl sm:text-2xl font-display font-medium text-muted min-h-[2rem]"
+                className="mt-4 text-xl sm:text-2xl font-display font-medium text-white"
               >
-                <Typewriter />
+                <span className="inline-flex rounded-full border border-white/20 bg-white/[0.08] px-4 py-2 text-white/90 text-base sm:text-lg shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-sm">
+                  Full-Stack Engineer · AI Developer
+                </span>
               </motion.p>
 
               {/* Value prop */}
@@ -149,7 +77,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="mt-6 text-base sm:text-lg text-muted max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                className="mt-6 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-white/88 leading-relaxed drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)]"
               >
                 Bristol-based engineer building production AI-powered products end-to-end.
                 From blank schema to shipped product — I own the whole stack.
@@ -170,13 +98,13 @@ export default function Home() {
                 </Link>
                 <Link
                   to="/contact"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/[0.07] hover:bg-white/[0.12] border border-white/[0.1] text-text font-semibold text-sm transition-all hover:-translate-y-0.5"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/[0.14] hover:bg-white/[0.2] border border-white/[0.18] text-white font-semibold text-sm transition-all shadow-lg shadow-black/20 backdrop-blur-sm hover:-translate-y-0.5"
                 >
                   Hire Me
                 </Link>
                 <Link
                   to="/cv"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-transparent hover:bg-white/[0.05] border border-white/[0.08] text-muted hover:text-text font-medium text-sm transition-all"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-black/20 hover:bg-white/[0.1] border border-white/[0.14] text-white/82 hover:text-white font-medium text-sm transition-all backdrop-blur-sm"
                 >
                   <Download size={15} /> CV
                 </Link>
@@ -189,30 +117,34 @@ export default function Home() {
                 transition={{ delay: 1.0, duration: 0.5 }}
                 className="mt-8 flex justify-center lg:justify-start gap-4"
               >
-                <a href="https://github.com/mathewkadesh" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2.5 rounded-xl text-muted hover:text-text hover:bg-white/[0.06] transition-colors">
+                <a href="https://github.com/mathewkadesh" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2.5 rounded-xl text-white/72 hover:text-white hover:bg-white/[0.1] transition-colors backdrop-blur-sm">
                   <Github size={20} />
                 </a>
-                <a href="https://www.linkedin.com/in/mathew-kadesh-141b37188/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2.5 rounded-xl text-muted hover:text-text hover:bg-white/[0.06] transition-colors">
+                <a href="https://www.linkedin.com/in/mathew-kadesh-141b37188/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2.5 rounded-xl text-white/72 hover:text-white hover:bg-white/[0.1] transition-colors backdrop-blur-sm">
                   <Linkedin size={20} />
                 </a>
-                <a href="mailto:kadeshmathew@gmail.com" aria-label="Email" className="p-2.5 rounded-xl text-muted hover:text-text hover:bg-white/[0.06] transition-colors">
+                <a href="mailto:kadeshmathew@gmail.com" aria-label="Email" className="p-2.5 rounded-xl text-white/72 hover:text-white hover:bg-white/[0.1] transition-colors backdrop-blur-sm">
                   <Mail size={20} />
                 </a>
               </motion.div>
             </div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 30 }}
+              initial={{ opacity: 0, scale: 0.98, y: 28 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative mx-auto w-full max-w-[360px] sm:max-w-[420px]"
+              transition={{ delay: 0.35, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              className="relative mx-auto hidden w-full max-w-[440px] lg:block"
             >
-              {/* Soft red glow behind the photo */}
-              <div className="absolute -inset-8 bg-cinema/15 blur-[80px] rounded-full opacity-70" aria-hidden="true" />
-              {/* Photo — no frame, fades into background at bottom */}
-              <div className="relative overflow-hidden">
-                <MediaSlot id="hero-profile" className="min-h-[440px] sm:min-h-[520px]" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
+              <div className="relative overflow-hidden bg-black">
+                <img
+                  src={heroPortrait}
+                  alt="Mathew Kadesh smiling in a black blazer on a night city street"
+                  className="aspect-[2/3] h-full w-full object-cover object-center"
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/90 to-transparent"
+                />
               </div>
             </motion.div>
           </div>
@@ -223,79 +155,10 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-faint"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-faint"
         >
-          <span className="text-xs font-mono">scroll</span>
-          <div className="w-px h-10 bg-gradient-to-b from-faint to-transparent" />
+          <ChevronDown size={20} className="animate-bounce" />
         </motion.div>
-      </section>
-
-      {/* ── QUICK STATS ── */}
-      <section className="relative py-12 px-4 sm:px-6 border-y border-white/[0.05]">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 text-center"
-          >
-            {heroStats.map((stat) => (
-              <motion.div key={stat.label} variants={fadeUp}>
-                <p className="font-display font-bold text-3xl sm:text-4xl text-text">{stat.value}</p>
-                <p className="text-xs sm:text-sm text-muted mt-1">{stat.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── CHOOSE PROFILE ── */}
-      <section className="relative py-24 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.p variants={fadeUp} className="text-xs font-mono text-cinema tracking-widest uppercase mb-3">
-              Choose Profile
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
-              Where do you want to go?
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {profiles.map((profile) => {
-              const Icon = profile.icon
-              return (
-                <motion.div key={profile.id} variants={fadeUp}>
-                  <Link
-                    to={profile.to}
-                    className={`flex flex-col items-center gap-4 p-6 rounded-2xl bg-gradient-to-br ${profile.color} border border-white/[0.08] hover:border-cinema/40 transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl hover:shadow-cinema/10`}
-                  >
-                    <div className="w-14 h-14 rounded-xl bg-white/[0.08] flex items-center justify-center group-hover:bg-cinema/20 transition-colors">
-                      <Icon size={26} className="text-muted group-hover:text-cinema transition-colors" />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-display font-semibold text-text">{profile.label}</p>
-                      <p className="text-xs text-faint mt-0.5">{profile.sublabel}</p>
-                    </div>
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </div>
       </section>
 
       {/* ── WHY WORK WITH ME ── */}
@@ -312,7 +175,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.p variants={fadeUp} className="text-xs font-mono text-cinema tracking-widest uppercase mb-3">
+            <motion.p variants={fadeUp} className="text-xs font-mono text-muted/70 tracking-widest uppercase mb-3">
               Why Work With Me
             </motion.p>
             <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
@@ -358,7 +221,7 @@ export default function Home() {
             className="flex items-end justify-between mb-10"
           >
             <div>
-              <motion.p variants={fadeUp} className="text-xs font-mono text-cinema tracking-widest uppercase mb-2">
+              <motion.p variants={fadeUp} className="text-xs font-mono text-muted/70 tracking-widest uppercase mb-2">
                 Featured Work
               </motion.p>
               <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
@@ -399,6 +262,9 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                  {project.metric && (
+                    <p className="text-sm font-mono font-semibold text-cinema mb-1">{project.metric}</p>
+                  )}
                   <h3 className="font-display font-semibold text-text text-lg mb-1">{project.title}</h3>
                   <p className="text-sm text-muted line-clamp-2">{project.tagline}</p>
                   <Link
@@ -429,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* ── INTRO BLURB ── */}
-      <section className="relative py-28 px-4 sm:px-6">
+      <section className="relative py-24 px-4 sm:px-6">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-glow-section opacity-40"
@@ -441,7 +307,7 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true }}
           >
-            <motion.p variants={fadeUp} className="text-xs font-mono text-cinema tracking-widest uppercase mb-4">
+            <motion.p variants={fadeUp} className="text-xs font-mono text-muted/70 tracking-widest uppercase mb-4">
               About
             </motion.p>
             <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text mb-6 leading-tight">
@@ -460,10 +326,10 @@ export default function Home() {
                 <Download size={15} /> Download CV
               </Link>
               <Link
-                to="/contact"
+                to="/about"
                 className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/[0.07] hover:bg-white/[0.12] border border-white/[0.1] text-text font-semibold text-sm transition-all hover:-translate-y-0.5"
               >
-                Hire Me
+                About Me
               </Link>
             </motion.div>
           </motion.div>
@@ -487,8 +353,11 @@ export default function Home() {
             <motion.h2 variants={fadeUp} className="font-display font-bold text-4xl sm:text-5xl text-text leading-tight mb-6">
               Let's build something <span className="text-cinema">cinematic.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-muted mb-8">
+            <motion.p variants={fadeUp} className="text-muted mb-2">
               Open to full-time remote engineering roles, contract work, and AI consulting.
+            </motion.p>
+            <motion.p variants={fadeUp} className="text-sm text-faint mb-8">
+              GMT · Bristol, UK · Available full-time remote · Responding within 24 h
             </motion.p>
             <motion.div variants={fadeUp}>
               <Link

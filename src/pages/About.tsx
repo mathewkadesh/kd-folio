@@ -21,10 +21,10 @@ const softIcons: Record<string, React.ElementType> = {
 }
 
 const stats = [
-  { value: '10+', label: 'Projects Shipped' },
+  { value: '9', label: 'Builds Shipped' },
   { value: '18+', label: 'Technologies' },
   { value: '3+', label: 'Years Building' },
-  { value: '400+', label: 'AI Analyses Served' },
+  { value: '100+', label: 'AI Analyses (Beta)' },
 ]
 
 const testimonials = [

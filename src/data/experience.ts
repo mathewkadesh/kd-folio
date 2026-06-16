@@ -20,7 +20,7 @@ export interface EducationItem {
 export const experience: ExperienceItem[] = [
   {
     id: 'freelance',
-    role: 'Senior Software Engineer',
+    role: 'Software Engineer',
     company: 'Freelance',
     period: 'December 2023 — 2024',
     location: 'Bristol, UK',

@@ -96,7 +96,7 @@ export default function CV() {
             {/* Header */}
             <header className="border-b-2 border-gray-900 pb-6 mb-6">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900">Mathew Kadesh</h1>
-              <p className="text-lg font-semibold text-gray-600 mt-1">Senior Software Engineer</p>
+              <p className="text-lg font-semibold text-gray-600 mt-1">Software Engineer</p>
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3 text-sm text-gray-600">
                 <span className="flex items-center gap-1"><MapPin size={13} /> Bristol, United Kingdom</span>
                 <a href="tel:+447365163365" className="flex items-center gap-1 hover:text-gray-900"><Phone size={13} /> +44 7365 163365</a>

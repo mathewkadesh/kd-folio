@@ -53,6 +53,11 @@ export default function ProjectCard({ project, index = 0 }: Props) {
           <span className="text-xs font-mono text-faint">{project.year}</span>
         </div>
 
+        {/* Metric badge */}
+        {project.metric && (
+          <p className="text-sm font-mono font-semibold text-cinema leading-none">{project.metric}</p>
+        )}
+
         {/* Title + tagline */}
         <div>
           <Link to={`/projects/${project.slug}`}>

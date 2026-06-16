@@ -16,6 +16,7 @@ export interface Project {
   caseStudySlug?: string
   mediaId: string
   featured: boolean
+  metric?: string
 }
 
 export const projects: Project[] = [
@@ -35,6 +36,7 @@ export const projects: Project[] = [
     caseStudySlug: 'aptira',
     mediaId: 'aptira-poster',
     featured: true,
+    metric: '2,400+ users scored',
   },
   {
     id: 'pitchghost',
@@ -52,6 +54,7 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/mathewkadesh/PitchGhost',
     mediaId: 'pitchghost-poster',
     featured: true,
+    metric: '72 VC firms indexed',
   },
   {
     id: 'flood',
@@ -69,6 +72,7 @@ export const projects: Project[] = [
     caseStudySlug: 'flood-monitoring',
     mediaId: 'flood-poster',
     featured: true,
+    metric: '3,694 live stations',
   },
   {
     id: 'faithconnect',
