@@ -8,7 +8,7 @@ import SectionGlow from '@/components/SectionGlow'
 import ProjectCard from '@/components/ProjectCard'
 import { projects, allTags, type ProjectTag } from '@/data/projects'
 
-const years = ['All', '2026'] as const
+const years = ['All', '2026', '2022'] as const
 
 export default function Projects() {
   const [activeTag, setActiveTag] = useState<ProjectTag>('All')

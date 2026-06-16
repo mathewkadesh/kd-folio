@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ExternalLink, Github, Check } from 'lucide-react'
+import { cn } from '@/lib/cn'
 import { fadeUp, stagger } from '@/lib/motion'
 import MediaSlot from '@/components/MediaSlot'
 import { projects } from '@/data/projects'
@@ -12,6 +13,12 @@ const statusColor: Record<string, string> = {
   delivered:        'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
   building:         'bg-yellow-500/15 text-yellow-400 border-yellow-500/30',
   demo:             'bg-purple-500/15 text-purple-400 border-purple-500/30',
+}
+
+const mobileScreenshotCols: Record<number, string> = {
+  4: 'sm:grid-cols-4',
+  5: 'sm:grid-cols-5',
+  6: 'sm:grid-cols-6',
 }
 
 export default function ProjectDetail() {
@@ -192,7 +199,14 @@ export default function ProjectDetail() {
               transition={{ duration: 0.5 }}
             >
               <SectionLabel>Screenshots</SectionLabel>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                className={cn(
+                  'grid gap-4 items-start',
+                  project.tags.includes('Mobile')
+                    ? cn('grid-cols-2', mobileScreenshotCols[detail.screenshotIds.length] ?? 'sm:grid-cols-4')
+                    : 'grid-cols-1 sm:grid-cols-2',
+                )}
+              >
                 {detail.screenshotIds.map((id) => (
                   <motion.div
                     key={id}

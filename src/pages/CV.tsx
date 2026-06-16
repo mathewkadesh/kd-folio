@@ -42,9 +42,10 @@ const portfolioProjects = [
     desc: 'Career readiness infrastructure — deterministic scoring across 5 pillars (Capability, Evidence, Role Fit, Professional Behaviour, Growth). React + FastAPI + Supabase + Claude API. 2,400+ candidates verified, 4.8 ★ rating.',
   },
   {
-    name: 'SocialPulse AI',
-    status: 'In Development',
-    desc: 'AI social-media management SaaS for local businesses. Meta Graph API for post scheduling, Claude-powered content generation, competitor radar via Leaflet. React + Vite + TypeScript + Supabase.',
+    name: 'PitchGhost',
+    url: 'mathewkadesh.github.io/PitchGhost',
+    status: 'Live',
+    desc: 'Founder intelligence tool that generates structured VC firm dossiers — investment thesis, dealbreakers, pitch confidence scoring (Thesis Alignment, Stage Fit, Sector Match), and a personalised follow-up email. 72 firms tracked across 14 sectors. React + Vite + TypeScript + Claude API.',
   },
   {
     name: 'Flood Monitor — Pipeline Dashboard',
@@ -53,20 +54,10 @@ const portfolioProjects = [
     desc: 'Real-time flood risk visualisation for AECOM field engineers. 200+ Environment Agency sensor feeds aggregated every 15 min, Leaflet map with GeoJSON risk overlays, D3.js sparklines. 12 field engineers, ~40% decision-time reduction.',
   },
   {
-    name: 'AtlasGym',
-    status: 'Building',
-    desc: 'Gym management SaaS — class bookings, membership lifecycle, staff scheduling, analytics dashboard. React + Supabase with Row Level Security for multi-tenant isolation.',
-  },
-  {
     name: 'Faith Heroes',
     url: 'mathewkadesh.github.io/faith-heroes',
     status: 'Live',
     desc: 'Full e-commerce and community platform for a handcrafted Bible story gift box brand. Custom box builder, community story-sharing, Stripe payments, newsletter. React + Node.js + Supabase.',
-  },
-  {
-    name: 'Background Remover',
-    status: 'Demo',
-    desc: 'Privacy-first client-side ML image masking using TensorFlow.js + WebGL segmentation. Zero server uploads — runs entirely in-browser. Single-page app with drag-and-drop and PNG export.',
   },
 ]
 

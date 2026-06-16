@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowRight, Download, Github, Linkedin, Mail,
   Layers, Brain, Users, Phone,
+  Target, MessageSquare, Lightbulb, TrendingUp,
 } from 'lucide-react'
 import { fadeUp, stagger } from '@/lib/motion'
 import MediaSlot from '@/components/MediaSlot'
 import { projects } from '@/data/projects'
+import { softSkills } from '@/data/skills'
 
 // --- Typewriter subtitles ---
 const subtitles = ['Full-Stack Engineer', 'AI Developer', 'Senior Software Engineer']
@@ -46,7 +48,7 @@ const profiles = [
   {
     id: 'projects',
     label: 'Projects',
-    sublabel: '6 builds shipped',
+    sublabel: '10 builds shipped',
     icon: Layers,
     to: '/projects',
     color: 'from-cinema/20 to-ember/10',
@@ -76,6 +78,22 @@ const profiles = [
     color: 'from-yellow-500/20 to-orange-500/10',
   },
 ]
+
+// --- Quick stats (recruiter-facing) ---
+const heroStats = [
+  { value: '10+',    label: 'Projects Shipped' },
+  { value: '3+',     label: 'Years Building' },
+  { value: '2,400+', label: 'Job Seekers Verified' },
+  { value: 'MSc',    label: 'Advanced Computer Science' },
+]
+
+// --- Why work with me ---
+const valueIcons: Record<string, React.ElementType> = {
+  Target, MessageSquare, Lightbulb, TrendingUp,
+}
+const valueProps = softSkills.filter((s) =>
+  ['Ownership', 'Communication', 'Problem Solving', 'Impact Focus'].includes(s.title),
+)
 
 // --- Marquee ---
 const stackItems = [
@@ -212,6 +230,26 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* ── QUICK STATS ── */}
+      <section className="relative py-12 px-4 sm:px-6 border-y border-white/[0.05]">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 text-center"
+          >
+            {heroStats.map((stat) => (
+              <motion.div key={stat.label} variants={fadeUp}>
+                <p className="font-display font-bold text-3xl sm:text-4xl text-text">{stat.value}</p>
+                <p className="text-xs sm:text-sm text-muted mt-1">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── CHOOSE PROFILE ── */}
       <section className="relative py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
@@ -253,6 +291,55 @@ export default function Home() {
                       <p className="text-xs text-faint mt-0.5">{profile.sublabel}</p>
                     </div>
                   </Link>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── WHY WORK WITH ME ── */}
+      <section className="relative py-24 px-4 sm:px-6">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-glow-section opacity-40"
+        />
+        <div className="max-w-6xl mx-auto relative">
+          <motion.div
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.p variants={fadeUp} className="text-xs font-mono text-cinema tracking-widest uppercase mb-3">
+              Why Work With Me
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
+              Built for teams that ship
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            variants={stagger(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          >
+            {valueProps.map((item) => {
+              const Icon = valueIcons[item.icon]
+              return (
+                <motion.div
+                  key={item.title}
+                  variants={fadeUp}
+                  className="p-6 rounded-2xl bg-surface border border-white/[0.07] hover:border-cinema/30 transition-colors duration-300"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-cinema/10 flex items-center justify-center mb-4">
+                    <Icon size={20} className="text-cinema" />
+                  </div>
+                  <h3 className="font-display font-semibold text-text mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                 </motion.div>
               )
             })}
