@@ -27,26 +27,29 @@ const stackItems = [
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured)
-  const heroPortrait = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/mathew-kadesh-hero-portrait.png`
+  const heroBackground = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/landing-hero-background.png`
+  const heroPortrait = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/mathew-kadesh-hero-transparent.png`
 
   return (
     <div className="bg-ink min-h-screen">
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div
+      <section className="relative flex items-start overflow-hidden">
+        <img
+          src={heroBackground}
+          alt=""
           aria-hidden="true"
-          className="absolute inset-0 bg-ink"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_34%,rgba(229,9,20,0.12)_0%,transparent_46%)]"
+          className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
         />
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink to-transparent"
         />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28">
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,480px)]">
             <div className="max-w-3xl text-center lg:text-left">
               {/* Name */}
@@ -135,17 +138,11 @@ export default function Home() {
               transition={{ delay: 0.35, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               className="relative mx-auto hidden w-full max-w-[440px] lg:block"
             >
-              <div className="relative overflow-hidden bg-black">
-                <img
-                  src={heroPortrait}
-                  alt="Mathew Kadesh smiling in a black blazer on a night city street"
-                  className="aspect-[2/3] h-full w-full object-cover object-center"
-                />
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/90 to-transparent"
-                />
-              </div>
+              <img
+                src={heroPortrait}
+                alt="Mathew Kadesh smiling in a black blazer"
+                className="mx-auto h-[min(78vh,760px)] w-auto max-w-full object-contain object-bottom drop-shadow-[0_24px_38px_rgba(0,0,0,0.6)]"
+              />
             </motion.div>
           </div>
         </div>

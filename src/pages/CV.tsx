@@ -38,8 +38,8 @@ const portfolioProjects = [
   {
     name: 'Aptira',
     url: 'aptira.uk',
-    status: 'Live',
-    desc: 'Career readiness infrastructure — deterministic scoring across 5 pillars (Capability, Evidence, Role Fit, Professional Behaviour, Growth). React + FastAPI + Supabase + Claude API. 2,400+ candidates verified, 4.8 ★ rating.',
+    status: 'Controlled Beta',
+    desc: 'Career readiness infrastructure — deterministic scoring across 5 pillars (Capability, Evidence, Role Fit, Professional Behaviour, Growth), scored 0–850, with role-specific gap analysis and next-best-actions. React + FastAPI + Supabase + Claude API. GDPR-compliant architecture; controlled beta ahead of an August 2026 commercial launch.',
   },
   {
     name: 'PitchGhost',

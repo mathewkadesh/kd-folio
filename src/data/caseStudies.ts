@@ -38,20 +38,20 @@ export const caseStudies: CaseStudy[] = [
     client: 'Personal Product',
     year: 2024,
     duration: '4 months',
-    status: '🟢 Live at aptira.uk',
+    status: '🟡 Controlled beta at aptira.uk · commercial launch Aug 2026',
     bannerMediaId: 'aptira-banner',
     posterMediaId: 'aptira-poster',
-    tagline: 'Career readiness infrastructure — deterministic scoring, verified skills, employer-ready profiles.',
+    tagline: 'Career readiness infrastructure — CV scoring, gap analysis, and proof tracking in one workflow.',
     tags: ['AI', 'Full-Stack', 'React', 'FastAPI'],
     stack: ['React 18', 'TypeScript', 'FastAPI', 'Supabase', 'Claude API', 'Tailwind CSS', 'Vite'],
     metrics: [
-      { label: 'Job Seekers Verified', value: '2,400+' },
-      { label: 'Platform Rating', value: '4.8 ★' },
-      { label: 'Shortlist Reduction', value: '40%' },
-      { label: 'Candidate Fit Score', value: '94%' },
+      { label: 'Beta Users', value: '11' },
+      { label: 'Scoring Pillars', value: '5' },
+      { label: 'Index Range', value: '0–850' },
+      { label: 'Architecture', value: 'GDPR' },
     ],
     problem:
-      'Job seekers lack a credible, evidence-backed signal to show employers — and employers waste time on candidates who look good on paper but aren\'t market-ready. Generic career tools give vague advice. Aptira was built to fix both sides: give candidates a transparent, auditable readiness score (not an AI black box), and give employers a hiring signal they can trust.',
+      'Job seekers lack a credible, evidence-backed signal to show employers — and employers waste time on candidates who look good on paper but aren\'t market-ready. Generic career tools give vague advice. Aptira was built to fix both sides: give candidates a transparent, auditable readiness score (not an AI black box) plus a concrete plan to close their gaps, and give employers a hiring signal they can trust.',
     approach: [
       {
         title: 'Deterministic Scoring Model',
@@ -64,24 +64,28 @@ export const caseStudies: CaseStudy[] = [
         mediaId: 'aptira-screen1',
       },
       {
+        title: 'Readiness Score & Gap Analysis',
+        body: 'Each candidate gets a role-specific readiness score (e.g. 724/850, "Above Average") broken into Skills, Evidence, and Profile sub-scores, plus a ranked "Top gaps to close" list with completion percentages (e.g. Portfolio proof 76%, Interview examples 62%). A "Next best actions" checklist and a projected point gain from completing outstanding proof tasks turn the score into a concrete plan, not just a number.',
+      },
+      {
         title: 'Shareable Verified Snapshot',
         body: 'Candidates receive a public snapshot URL — a single link they can share with employers showing their verified Aptira Index, dimension breakdown, and evidence items. The React frontend renders the dashboard with live score updates as users complete evidence items.',
       },
       {
         title: 'Employer-Facing Dashboard',
-        body: 'Built a dedicated employer portal where hiring teams request snapshot access and review pre-verified candidate profiles before the first interview. Employers see the full score breakdown, evidence items, and role-fit rating — no CV interpretation required. Used by 400+ hiring teams; average snapshot review time under 2 minutes.',
+        body: 'A dedicated employer portal lets hiring teams request snapshot access and review pre-verified candidate profiles before the first interview — full score breakdown, evidence items, and role-fit rating, no CV interpretation required.',
         mediaId: 'aptira-screen3',
       },
       {
         title: 'Monetisation — Pricing & Plans',
-        body: 'Designed and implemented a three-tier pricing model (FREE, PRO at £11.99/month, Enterprise custom) with monthly, 6-month, and annual billing cycles. Stripe handles subscriptions; a full plan comparison table and add-on system are server-rendered for SEO. Pricing copy tested for conversion.',
+        body: 'Designed and implemented a three-tier pricing model (FREE, PRO at £11.99/month, Enterprise custom) with monthly, 6-month, and annual billing cycles. Stripe handles subscriptions; a full plan comparison table and add-on system are server-rendered for SEO.',
         mediaId: 'aptira-screen4',
       },
     ],
     architecture:
-      'React 18 SPA → Supabase Auth → FastAPI scoring service (deterministic algorithm + Claude API for market signal extraction) → Supabase Postgres for persistence. Deployed on Vercel (frontend) + Fly.io (API). Scoring logic is fully auditable — last reviewed March 2026.',
+      'React 18 SPA → Supabase Auth → FastAPI scoring service (deterministic algorithm + Claude API for market signal extraction) → Supabase Postgres for persistence, GDPR-compliant by design. Deployed on Vercel (frontend) + Fly.io (API). Scoring logic is fully auditable.',
     outcome:
-      '2,400+ job seekers verified with a 4.8 platform rating. Employer section live with 400+ hiring teams using verified snapshots. 40% reduction in employer shortlist time, 94% candidate fit improvement reported. The "no black box" deterministic model is the key differentiator — candidates and employers trust the score because it\'s transparent and auditable.',
+      'Aptira is live as a controlled beta with 11 onboarded users ahead of a planned August 2026 commercial launch. Core product — deterministic 5-pillar scoring (0–850 index), role-specific gap analysis with actionable next steps, and an employer snapshot dashboard — is built and functioning end-to-end. The "no black box" deterministic model is the key differentiator: candidates and employers can trust the score because it\'s transparent and auditable, not an AI guess.',
     screenshotIds: ['aptira-screen1', 'aptira-screen2', 'aptira-screen3', 'aptira-screen4'],
   },
   {
