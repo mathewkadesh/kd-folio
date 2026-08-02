@@ -1,0 +1,1 @@
+const a={hidden:{opacity:0,y:30},show:{opacity:1,y:0,transition:{duration:.55,ease:[.22,1,.36,1]}}},o=(s=.07,t=0)=>({hidden:{},show:{transition:{staggerChildren:s,delayChildren:t}}});export{a as f,o as s};
