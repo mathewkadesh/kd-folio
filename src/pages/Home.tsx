@@ -1,22 +1,10 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import {
-  ArrowRight, Download, Github, Linkedin, Mail, ChevronDown,
-  Target, MessageSquare, Lightbulb, TrendingUp,
-} from 'lucide-react'
+import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown } from 'lucide-react'
 import { fadeUp, stagger } from '@/lib/motion'
-import ProjectRow from '@/components/ProjectRow'
+import ProjectTile from '@/components/ProjectTile'
 import { projects } from '@/data/projects'
-import { softSkills } from '@/data/skills'
-
-// --- Why work with me ---
-const valueIcons: Record<string, React.ElementType> = {
-  Target, MessageSquare, Lightbulb, TrendingUp,
-}
-const valueProps = softSkills.filter((s) =>
-  ['Ownership', 'Communication', 'Problem Solving', 'Impact Focus'].includes(s.title),
-)
 
 // --- Marquee ---
 const stackItems = [
@@ -27,13 +15,6 @@ const stackItems = [
 ]
 
 export default function Home() {
-  const featuredRow  = projects.filter((p) => p.featured)
-  const fullStackRow = projects.filter((p) => p.tags.includes('Full-Stack') || p.tags.includes('AI'))
-  const webRow        = projects.filter((p) =>
-    p.tags.includes('React') && !p.tags.includes('Full-Stack') && !p.tags.includes('AI'),
-  )
-  const mobileRow     = projects.filter((p) => p.tags.includes('Mobile'))
-
   const heroBackground = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/landing-hero-background.png`
   const heroPortrait = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/mathew-kadesh-hero-transparent.png`
 
@@ -172,58 +153,13 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── WHY WORK WITH ME ── */}
-      <section className="relative py-24 px-4 sm:px-6">
+      {/* ── PROJECTS ── */}
+      <section id="projects" className="relative py-24 px-4 sm:px-6 scroll-mt-20">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-glow-section opacity-40"
         />
         <div className="max-w-6xl mx-auto relative">
-          <motion.div
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.p variants={fadeUp} className="text-xs font-mono text-muted/70 tracking-widest uppercase mb-3">
-              Why Work With Me
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
-              Built for teams that ship
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-          >
-            {valueProps.map((item) => {
-              const Icon = valueIcons[item.icon]
-              return (
-                <motion.div
-                  key={item.title}
-                  variants={fadeUp}
-                  className="p-6 rounded-2xl bg-surface border border-white/[0.07] hover:border-cinema/30 transition-colors duration-300"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-cinema/10 flex items-center justify-center mb-4">
-                    <Icon size={20} className="text-cinema" />
-                  </div>
-                  <h3 className="font-display font-semibold text-text mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{item.description}</p>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── PROJECTS (Netflix-style rows) ── */}
-      <section id="projects" className="py-24 px-4 sm:px-6 scroll-mt-20">
-        <div className="max-w-6xl mx-auto">
           <motion.div
             variants={stagger(0.08)}
             initial="hidden"
@@ -239,12 +175,19 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          <div className="flex flex-col gap-12">
-            <ProjectRow title="Featured Work" projects={featuredRow} />
-            <ProjectRow title="Full-Stack & AI Products" projects={fullStackRow} />
-            <ProjectRow title="Web & Marketing Sites" projects={webRow} />
-            <ProjectRow title="Mobile Apps" projects={mobileRow} />
-          </div>
+          <motion.div
+            variants={stagger(0.05)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"
+          >
+            {projects.map((project) => (
+              <motion.div key={project.id} variants={fadeUp}>
+                <ProjectTile project={project} />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
