@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   ArrowRight, Download, Github, Linkedin, Mail, ChevronDown,
   Target, MessageSquare, Lightbulb, TrendingUp,
 } from 'lucide-react'
 import { fadeUp, stagger } from '@/lib/motion'
-import MediaSlot from '@/components/MediaSlot'
+import ProjectRow from '@/components/ProjectRow'
 import { projects } from '@/data/projects'
 import { softSkills } from '@/data/skills'
 
@@ -26,9 +27,22 @@ const stackItems = [
 ]
 
 export default function Home() {
-  const featured = projects.filter((p) => p.featured)
+  const featuredRow  = projects.filter((p) => p.featured)
+  const fullStackRow = projects.filter((p) => p.tags.includes('Full-Stack') || p.tags.includes('AI'))
+  const webRow        = projects.filter((p) =>
+    p.tags.includes('React') && !p.tags.includes('Full-Stack') && !p.tags.includes('AI'),
+  )
+  const mobileRow     = projects.filter((p) => p.tags.includes('Mobile'))
+
   const heroBackground = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/landing-hero-background.png`
   const heroPortrait = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/mathew-kadesh-hero-transparent.png`
+
+  const location = useLocation()
+  useEffect(() => {
+    if (location.hash === '#projects') {
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [location.hash])
 
   return (
     <div className="bg-ink min-h-screen">
@@ -94,7 +108,7 @@ export default function Home() {
                 className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3"
               >
                 <Link
-                  to="/projects"
+                  to="/#projects"
                   className="flex items-center gap-2 px-6 py-3 rounded-xl bg-cinema hover:bg-cinemaHover text-white font-semibold text-sm transition-all shadow-lg shadow-cinema/25 hover:shadow-cinema/40 hover:-translate-y-0.5"
                 >
                   View My Work <ArrowRight size={16} />
@@ -207,72 +221,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED PROJECTS ── */}
-      <section className="py-24 px-4 sm:px-6">
+      {/* ── PROJECTS (Netflix-style rows) ── */}
+      <section id="projects" className="py-24 px-4 sm:px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             variants={stagger(0.08)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex items-end justify-between mb-10"
+            className="mb-10"
           >
-            <div>
-              <motion.p variants={fadeUp} className="text-xs font-mono text-muted/70 tracking-widest uppercase mb-2">
-                Featured Work
-              </motion.p>
-              <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
-                Recent Projects
-              </motion.h2>
-            </div>
-            <motion.div variants={fadeUp}>
-              <Link
-                to="/projects"
-                className="hidden sm:flex items-center gap-2 text-sm text-muted hover:text-cinema transition-colors"
-              >
-                All projects <ArrowRight size={14} />
-              </Link>
-            </motion.div>
+            <motion.p variants={fadeUp} className="text-xs font-mono text-muted/70 tracking-widest uppercase mb-2">
+              Portfolio
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl sm:text-4xl text-text">
+              Projects
+            </motion.h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featured.map((project, i) => (
-              <motion.article
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="group rounded-xl overflow-hidden bg-surface border border-white/[0.07] hover:border-cinema/35 transition-colors"
-              >
-                <div className="overflow-hidden">
-                  <MediaSlot
-                    id={project.mediaId}
-                    className="transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex gap-1.5 flex-wrap mb-3">
-                    {project.stack.slice(0, 4).map((t) => (
-                      <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-surface2 text-faint border border-white/[0.05]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  {project.metric && (
-                    <p className="text-sm font-mono font-semibold text-cinema mb-1">{project.metric}</p>
-                  )}
-                  <h3 className="font-display font-semibold text-text text-lg mb-1">{project.title}</h3>
-                  <p className="text-sm text-muted line-clamp-2">{project.tagline}</p>
-                  <Link
-                    to={`/projects/${project.slug}`}
-                    className="mt-3 flex items-center gap-1.5 text-sm text-cinema hover:text-cinemaHover font-medium transition-colors"
-                  >
-                    View Details <ArrowRight size={13} />
-                  </Link>
-                </div>
-              </motion.article>
-            ))}
+          <div className="flex flex-col gap-12">
+            <ProjectRow title="Featured Work" projects={featuredRow} />
+            <ProjectRow title="Full-Stack & AI Products" projects={fullStackRow} />
+            <ProjectRow title="Web & Marketing Sites" projects={webRow} />
+            <ProjectRow title="Mobile Apps" projects={mobileRow} />
           </div>
         </div>
       </section>

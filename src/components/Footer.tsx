@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom'
 import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react'
 
 const quickLinks = [
-  { label: 'Projects',     to: '/projects' },
+  { label: 'Projects',     to: '/#projects' },
   { label: 'About',        to: '/about' },
-  { label: 'Case Studies', to: '/case-studies' },
   { label: 'Services',     to: '/services' },
   { label: 'Contact',      to: '/contact' },
   { label: 'ATS CV',       to: '/cv' },

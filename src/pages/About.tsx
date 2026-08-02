@@ -81,7 +81,7 @@ export default function About() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2 shrink-0">
-              <Link to="/projects" className="px-4 py-2 rounded-lg bg-cinema hover:bg-cinemaHover text-white text-sm font-semibold transition-colors">
+              <Link to="/#projects" className="px-4 py-2 rounded-lg bg-cinema hover:bg-cinemaHover text-white text-sm font-semibold transition-colors">
                 Projects
               </Link>
               <Link to="/cv" className="px-4 py-2 rounded-lg bg-surface2 hover:bg-white/[0.1] border border-white/[0.08] text-muted hover:text-text text-sm font-medium transition-colors">
@@ -399,7 +399,7 @@ export default function About() {
             Ready to build something cinematic?
           </h2>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
-            <Link to="/projects" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-cinema hover:bg-cinemaHover text-white font-semibold text-sm transition-all hover:-translate-y-0.5">
+            <Link to="/#projects" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-cinema hover:bg-cinemaHover text-white font-semibold text-sm transition-all hover:-translate-y-0.5">
               View Projects <ArrowRight size={15} />
             </Link>
             <Link to="/contact" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-surface hover:bg-surface2 border border-white/[0.08] text-muted hover:text-text font-medium text-sm transition-all">

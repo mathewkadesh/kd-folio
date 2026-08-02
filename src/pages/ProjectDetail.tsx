@@ -26,7 +26,7 @@ export default function ProjectDetail() {
   const project = projects.find((p) => p.slug === slug)
   const detail  = projectDetails[slug ?? '']
 
-  if (!project) return <Navigate to="/projects" replace />
+  if (!project) return <Navigate to="/#projects" replace />
 
   return (
     <div className="bg-ink min-h-screen pt-24">
@@ -38,7 +38,7 @@ export default function ProjectDetail() {
         <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-6 pb-10 z-10">
           <div className="max-w-5xl mx-auto">
             <Link
-              to="/projects"
+              to="/#projects"
               className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-text transition-colors mb-5"
             >
               <ArrowLeft size={14} /> Back to Projects
@@ -250,7 +250,7 @@ export default function ProjectDetail() {
               </a>
             )}
             <Link
-              to="/projects"
+              to="/#projects"
               className="flex items-center gap-2 px-6 py-3 rounded-xl bg-transparent border border-white/[0.06] text-muted hover:text-text font-medium text-sm transition-all hover:-translate-y-0.5 ml-auto"
             >
               <ArrowLeft size={14} /> All Projects

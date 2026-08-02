@@ -5,7 +5,6 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 const Home          = lazy(() => import('./pages/Home'))
-const Projects      = lazy(() => import('./pages/Projects'))
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'))
 const About         = lazy(() => import('./pages/About'))
 const Services      = lazy(() => import('./pages/Services'))
@@ -36,8 +35,6 @@ export default function App() {
             <Routes>
               <Route path="/"                          element={<Home />} />
               <Route path="/portfolio"                 element={<Home />} />
-              <Route path="/projects"                  element={<Projects />} />
-              <Route path="/portfolio/projects"        element={<Projects />} />
               <Route path="/projects/:slug"            element={<ProjectDetail />} />
               <Route path="/portfolio/projects/:slug"  element={<ProjectDetail />} />
               <Route path="/about"                     element={<About />} />
@@ -48,11 +45,13 @@ export default function App() {
               <Route path="/portfolio/contact"         element={<Contact />} />
               <Route path="/cv"                        element={<CV />} />
               <Route path="/portfolio/cv"              element={<CV />} />
-              {/* Redirect old case-study URLs */}
-              <Route path="/case-studies"              element={<Navigate to="/projects" replace />} />
-              <Route path="/case-studies/:slug"        element={<Navigate to="/projects" replace />} />
-              <Route path="/portfolio/case-studies"    element={<Navigate to="/projects" replace />} />
-              <Route path="/portfolio/case-studies/:slug" element={<Navigate to="/projects" replace />} />
+              {/* Projects now live on the homepage — redirect old list-page URLs */}
+              <Route path="/projects"                  element={<Navigate to="/#projects" replace />} />
+              <Route path="/portfolio/projects"        element={<Navigate to="/#projects" replace />} />
+              <Route path="/case-studies"              element={<Navigate to="/#projects" replace />} />
+              <Route path="/case-studies/:slug"        element={<Navigate to="/#projects" replace />} />
+              <Route path="/portfolio/case-studies"    element={<Navigate to="/#projects" replace />} />
+              <Route path="/portfolio/case-studies/:slug" element={<Navigate to="/#projects" replace />} />
             </Routes>
           </AnimatePresence>
         </Suspense>
