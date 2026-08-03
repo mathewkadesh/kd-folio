@@ -207,6 +207,33 @@ export const projectDetails: Record<string, ProjectDetailData> = {
     duration: '2 weeks',
   },
 
+  'aos-signals': {
+    slug: 'aos-signals',
+    bannerMediaId: 'aos-signals-banner',
+    screenshotIds: ['aos-signals-poster', 'aos-signals-screen1', 'aos-signals-screen2', 'aos-signals-screen3'],
+    colorTheme: [
+      { name: 'Ink',      hex: '#0a1512' },
+      { name: 'Mint',     hex: '#5eead4' },
+      { name: 'Deep Teal', hex: '#134e4a' },
+      { name: 'Surface',  hex: '#e8ecec' },
+      { name: 'Charcoal', hex: '#111827' },
+    ],
+    stackGroups: [
+      { label: 'Frontend',   items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'] },
+      { label: 'Deployment', items: ['GitHub Pages'] },
+    ],
+    highlights: [
+      'Founder-led hero with a clear "learn before you act" positioning and built-in risk disclosures',
+      'Three-step learning journey — learn the strategy, see expert execution, develop with the community',
+      'Tiered membership plans (Monthly / Six-month / Annual) plus an optional AOS Robot technology add-on',
+      'Dedicated Market Insights and Community sections with founder video and live-session previews',
+      'Compliance-conscious copy throughout — educational framing, no guaranteed-returns language',
+    ],
+    role: 'Full-Stack Engineer',
+    client: 'AO Signals',
+    duration: '2 weeks',
+  },
+
   'note-translator': {
     slug: 'note-translator',
     bannerMediaId: 'note-translator-banner',

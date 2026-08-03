@@ -107,6 +107,22 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: 'aos-signals',
+    slug: 'aos-signals',
+    title: 'AO Signals',
+    tagline: 'Trading education platform — strategy, educational signals, live analysis and coaching',
+    description:
+      'Revamped marketing and membership site for AO Signals, a founder-led forex trading education brand. Brings the trading course, educational signals, regular live market analysis, and a private member community into one connected learning experience. Built around a clear "learn before you act" philosophy: a three-step journey (learn the strategy, see expert execution, develop with the community), tiered membership plans (monthly / six-month / annual, plus an optional AOS Robot technology add-on), and dedicated market insights and community sections — with risk disclosures built into the copy throughout.',
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    tags: ['React', 'Full-Stack'],
+    status: 'live',
+    statusLabel: '🟢 Live',
+    year: 2026,
+    liveUrl: 'https://mathewkadesh.github.io/aosignals-revamp',
+    mediaId: 'aos-signals-poster',
+    featured: false,
+  },
+  {
     id: 'lumino',
     slug: 'lumino',
     title: 'Lumino',
