@@ -1,1 +1,0 @@
-import{j as i,a as n}from"./index-GQaa1G3M.js";function a({className:t,intensity:o="medium"}){const e={subtle:"opacity-40",medium:"opacity-60",strong:"opacity-80"};return i.jsx("div",{"aria-hidden":"true",className:n("pointer-events-none absolute inset-x-0 top-0 h-64","bg-glow-section",e[o],t)})}export{a as S};
