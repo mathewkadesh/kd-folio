@@ -234,6 +234,33 @@ export const projectDetails: Record<string, ProjectDetailData> = {
     duration: '2 weeks',
   },
 
+  'zion-church': {
+    slug: 'zion-church',
+    bannerMediaId: 'zion-church-banner',
+    screenshotIds: ['zion-church-poster', 'zion-church-screen1', 'zion-church-screen2', 'zion-church-screen3'],
+    colorTheme: [
+      { name: 'Navy',    hex: '#0f1f3d' },
+      { name: 'Gold',    hex: '#c9972e' },
+      { name: 'Cream',   hex: '#f4ecd8' },
+      { name: 'Maroon',  hex: '#5b1a1a' },
+      { name: 'Ivory',   hex: '#fffbf2' },
+    ],
+    stackGroups: [
+      { label: 'Frontend',   items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'] },
+      { label: 'Deployment', items: ['Custom domain (zionchurch.uk)'] },
+    ],
+    highlights: [
+      'Welcoming hero with live Sunday worship time/location and a one-tap prayer request CTA',
+      '"From Vellore to Chennai to the UK" story section tracing 45+ years of ministry history',
+      'Ministries grid — Worship, Youth, Children, Outreach, House Visit Prayer, Online Prayer',
+      'Photo-led "Faith lived together" gallery section plus dedicated Events, Sermons and Testimonials pages',
+      'Bilingual English/Tamil language toggle in the header for the congregation\'s two main languages',
+    ],
+    role: 'Full-Stack Engineer',
+    client: 'Zion Revival Church (Bristol)',
+    duration: '2 weeks',
+  },
+
   'note-translator': {
     slug: 'note-translator',
     bannerMediaId: 'note-translator-banner',

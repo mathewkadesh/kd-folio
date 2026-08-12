@@ -123,6 +123,22 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: 'zion-church',
+    slug: 'zion-church',
+    title: 'Zion Revival Church',
+    tagline: 'Bristol church website — worship times, ministries, events, prayer requests and giving',
+    description:
+      'Marketing and community site for Zion Revival Church Bristol, a Christ-centred family church with roots tracing back 45+ years from Vellore to Chennai to the UK. Built as a warm, editorial experience: a welcoming hero with Sunday worship details and a one-tap prayer request, a "Grow in faith, find your people" ministries grid (Worship, Youth, Children, Outreach, House Visit Prayer, Online Prayer), a photo-led "Faith lived together" gallery section, and dedicated pages for events, sermons, testimonials and giving. Bilingual — English and Tamil — with a language toggle in the header.',
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    tags: ['React', 'Full-Stack'],
+    status: 'live',
+    statusLabel: '🟢 Live',
+    year: 2026,
+    liveUrl: 'https://zionchurch.uk',
+    mediaId: 'zion-church-poster',
+    featured: false,
+  },
+  {
     id: 'lumino',
     slug: 'lumino',
     title: 'Lumino',
